@@ -1,0 +1,128 @@
+ Excellent! Maintenant que je connais bien votre mod, voici des dizaines d'idées classées par catégories, toutes adaptées au PvP Faction, équilibrées et amusantes :
+
+  ---
+  🎯 IDÉES DE GAMEPLAY PVP & FACTION
+
+  1. Système de Siège de Territoire
+
+  - Les factions peuvent lancer un "siège" sur un chunk ennemi
+  - Durée : 30 minutes, la faction doit rester dans la zone
+  - Si réussi, le chunk est "affaibli" et peut être réclamé plus facilement
+  - Ajoute de la stratégie sans déséquilibre majeur
+
+  2. Points de Capture Dynamiques
+
+  - Des "points stratégiques" apparaissent aléatoirement sur la map (toutes les 2h)
+  - Les factions doivent les capturer et les tenir pendant 10 min
+  - Récompenses : XP faction, argent, power temporaire
+  - Encourage le PvP organisé
+
+  3. Système de Bounty (Prime)
+
+  - Les joueurs peuvent placer des primes sur la tête d'ennemis
+  - Le tueur récupère la prime + bonus d'XP job "Hunter"
+  - Liste des bounties visible dans un GUI
+  - Ajoute de la motivation pour le PvP
+
+  ---
+  🏆 PROGRESSION & RÉCOMPENSES
+
+  10. Classement Saison
+
+  - Système de "saisons" (1-3 mois)
+  - Classement des factions par power, territoires, kills
+  - Fin de saison : récompenses pour le top 3
+
+  ---
+  🛠️ UTILITAIRES & QUALITÉ DE VIE
+
+  13. Système de Signaux de Ralliement
+
+  - Item "Flare" ou commande /f rally
+  - Envoie une notification + waypoint temporaire à tous les membres
+  - Cooldown 10-15 minutes
+  - Parfait pour coordonner des défenses
+
+  14. Logs d'Activité Faction
+
+  - Dans une commande /f log et une permissions ajoutés
+  - Historique des actions importantes (claims, dépôts bank, promotions)
+  - Visible dans le GUI faction
+  - Aide à détecter les traîtres ou vols internes
+
+  ---
+  ⚔️ COMBAT & PVP AMÉLIORÉ
+
+  16. Système de Combat Logging
+
+  - Si un joueur se déconnecte en combat, un NPC apparaît à sa place
+  - Le NPC peut être tué et drop l'inventaire
+  - Empêche les "log out" abusifs
+
+  17. Kit PvP d'Urgence
+
+  - Commande /f kit disponible 1x par jour
+  - Donne un kit basique (nourriture, armure faible, armes de base)
+  - Utile pour les joueurs qui viennent de mourir
+
+  18. Système de Duel
+
+  - une dimension de duel ou tu perd pas de power et de stuff, en revanche les armures peuvent être abimés.
+
+  ---
+  🌍 MONDE & EXPLORATION
+
+  22. Événements Météo PvP
+
+  - Événements aléatoires ("Tempête de Mana", "Eclipse")
+  - Pendant l'événement : buffs/debuffs pour tous les joueurs
+  - Ex: "Eclipse" = mobs plus forts mais drops doublés
+
+  23. Système de Outpost
+
+  - Des claims achetables en bordure de warzones
+  - utile pour créer des pièges
+
+  ---
+  🎨 COSMÉTIQUES & PERSONNALISATION
+
+  31. Système de Titres
+
+  - Titres débloquables via achievements, jobs, réputation
+  - Affichés sous le pseudo du joueur
+  - Ex: "Le Mineur", "Chasseur de Primes", "Seigneur de Guerre"
+
+  34. Capes de Faction
+
+  - Propose un canva avec selecteur de couleur graphique, ils peuvent dessiner et sauvegarder, ça sera enregistrer dans un fichier png dans un dossier coté serveur.
+  - puis sera charger au render de la cape
+  - Chaque faction peut avoir une cape unique
+  - Design personnalisable (couleurs, motifs)
+  - Visible dans le jeu
+
+  ---
+  📊 STATISTIQUES & LEADERBOARDS
+
+  36. Statistiques de Combat Détaillées
+
+  - Tracker les kills, morts, KDA, dégâts infligés/reçus
+  - Visible dans un GUI personnel
+  - Classements par catégorie
+
+  ---
+  🎁 ÉVÉNEMENTS & MINI-JEUX
+
+  46. Événement "Raid Boss"
+
+  - Un boss puissant apparaît dans une zone
+  - Les factions peuvent s'allier temporairement pour le tuer
+  - Drops légendaires
+
+  47. Chasse au Trésor Faction
+
+  - Des indices sont donnés toutes les semaines
+  - Les factions doivent résoudre des énigmes pour trouver un trésor caché
+  - Encourage l'exploration et la collaboration
+
+  ---
+  Toutes ces idées sont équilibrées, compréhensibles, et s'intègrent naturellement avec vos systèmes existants (power, jobs, economy, territory). Elles ajoutent du gameplay sans créer de "pay-to-win" ou d'avantages écrasants.

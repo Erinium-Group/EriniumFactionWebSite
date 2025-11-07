@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Événements & Mini-Jeux - Erinium Faction</title>
+    <link rel="stylesheet" href="common-themes.css">
+    <style>
+        * {margin: 0;padding: 0;box-sizing: border-box;}
+        body {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background: var(--bg-primary);color: var(--text-primary);line-height: 1.6;}
+        .container {max-width: 1400px;margin: 0 auto;padding: 40px 30px;}
+        .page-header {text-align: center;margin-bottom: 60px;padding: 40px 20px;background: var(--gradient-header);border-radius: 20px;box-shadow: var(--shadow-lg);}
+        .page-header h1 {font-size: 3em;margin-bottom: 15px;color: #ffffff;text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);}
+        .page-header p {font-size: 1.2em;color: rgba(255, 255, 255, 0.9);max-width: 800px;margin: 0 auto;}
+        .event-grid {display: grid;grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));gap: 30px;}
+        .event-card {background: var(--bg-card);border: 2px solid var(--border-color);border-radius: 16px;padding: 35px;box-shadow: var(--shadow-md);transition: all 0.3s ease;position: relative;overflow: hidden;}
+        .event-card::before {content: '';position: absolute;top: 0;left: 0;right: 0;height: 5px;background: linear-gradient(90deg, #f59e0b, #ef4444, #ec4899);}
+        .event-card:hover {transform: translateY(-5px);box-shadow: var(--shadow-lg);}
+        .event-header {display: flex;align-items: center;gap: 20px;margin-bottom: 25px;padding-bottom: 20px;border-bottom: 2px solid var(--border-color);}
+        .event-icon {font-size: 3.5em;}
+        .event-title h2 {font-size: 1.9em;color: var(--danger);margin-bottom: 8px;}
+        .event-tag {display: inline-block;padding: 5px 14px;background: var(--danger);color: #ffffff;border-radius: 20px;font-size: 0.75em;font-weight: 600;text-transform: uppercase;}
+        .feature-box {background: var(--bg-secondary);border-left: 4px solid var(--accent-2);padding: 20px;border-radius: 8px;margin: 20px 0;}
+        .feature-box h4 {color: var(--accent-2);margin-bottom: 12px;}
+        .feature-box ul {list-style: none;padding: 0;}
+        .feature-box li {padding: 8px 0;color: var(--text-secondary);border-bottom: 1px solid var(--border-color);}
+        .feature-box li:last-child {border-bottom: none;}
+        @media (max-width: 768px) {.event-grid {grid-template-columns: 1fr;}.page-header h1 {font-size: 2em;}}
+    </style>
+</head>
+<body>
+    <div class="ef-controls-bar">
+        <div class="ef-controls-left">
+            <a href="ideas-index.html" class="ef-home-btn">← Retour aux Idées</a>
+            <a href="index.html" class="ef-home-btn">🏠 Accueil</a>
+        </div>
+        <div class="ef-controls-right">
+            <div class="ef-control-group">
+                <span class="ef-control-label">Thème</span>
+                <button class="ef-theme-btn" data-theme="light">☀️ Clair</button>
+                <button class="ef-theme-btn active" data-theme="dark">🌙 Sombre</button>
+                <button class="ef-theme-btn" data-theme="erinium">✨ Erinium</button>
+            </div>
+            <div class="ef-control-group">
+                <span class="ef-control-label">Langue</span>
+                <button class="ef-lang-btn active" data-lang="fr">🇫🇷 FR</button>
+                <button class="ef-lang-btn" data-lang="en">🇬🇧 EN</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="ef-content-wrapper">
+        <div class="container">
+            <div class="page-header">
+                <h1>🎁 Événements & Mini-Jeux</h1>
+                <p>Événements épiques et activités collectives pour rassembler la communauté et offrir des défis uniques.</p>
+            </div>
+
+            <div class="event-grid">
+                <div class="event-card">
+                    <div class="event-header">
+                        <span class="event-icon">🐉</span>
+                        <div class="event-title">
+                            <h2>Événement "Raid Boss"</h2>
+                            <span class="event-tag">PvE Massif</span>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">Un boss extrêmement puissant apparaît périodiquement, encourageant les factions à s'allier temporairement pour le vaincre et partager les récompenses légendaires.</p>
+
+                    <div class="feature-box">
+                        <h4>🎮 Mécanique de l'Événement</h4>
+                        <ul>
+                            <li><strong>Apparition:</strong> Boss spawn toutes les 2-3 semaines dans une zone aléatoire</li>
+                            <li><strong>Annonce:</strong> Message serveur 1h avant avec coordonnées approximatives</li>
+                            <li><strong>Durée:</strong> Le boss reste 45 minutes ou jusqu'à sa mort</li>
+                            <li><strong>Difficulté:</strong> Nécessite 15-30 joueurs coordonnés pour le vaincre</li>
+                            <li><strong>PvP désactivé:</strong> Dans un rayon de 100 blocs du boss pendant le combat</li>
+                            <li><strong>Phases:</strong> Le boss a 3 phases avec mécaniques différentes</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box">
+                        <h4>👹 Types de Boss</h4>
+                        <ul>
+                            <li><strong>Dragon Ancien:</strong> Vole, crache du feu, invoque des adds</li>
+                            <li><strong>Golem de Guerre:</strong> Haute défense, attaques AoE dévastatrices</li>
+                            <li><strong>Liche Nécromancien:</strong> Invoque des undeads, sorts de zone</li>
+                            <li><strong>Hydre:</strong> Plusieurs têtes, regen si pas toutes attaquées simultanément</li>
+                            <li><strong>Titan de Pierre:</strong> Immunité physique partielle, vulnérable à la magie</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box" style="border-left-color: #ffd700;">
+                        <h4 style="color: #ffd700;">🎁 Récompenses</h4>
+                        <ul>
+                            <li><strong>Drop Garanti:</strong> Items légendaires uniques (1-3 par boss)</li>
+                            <li><strong>Argent:</strong> 50,000-100,000$ répartis entre participants</li>
+                            <li><strong>XP:</strong> Énorme boost d'XP jobs pour tous les participants</li>
+                            <li><strong>Titre:</strong> "Tueur de [Boss]" pour le joueur final</li>
+                            <li><strong>Trophée:</strong> Item cosmétique unique displayable dans la base</li>
+                            <li><strong>Ressources Rares:</strong> Minerais/matériaux impossibles à obtenir autrement</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box">
+                        <h4>🤝 Alliances Temporaires</h4>
+                        <ul>
+                            <li><strong>Trêve Auto:</strong> PvP désactivé dans la zone du boss</li>
+                            <li><strong>Loot Partagé:</strong> Système de distribution équitable basé sur les dégâts</li>
+                            <li><strong>Revival:</strong> Les joueurs peuvent se rez mutuellement pendant l'event</li>
+                            <li><strong>Communication:</strong> Chat temporaire "Boss Raid" pour coordination</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-header">
+                        <span class="event-icon">🗺️</span>
+                        <div class="event-title">
+                            <h2>Chasse au Trésor Faction</h2>
+                            <span class="event-tag">Énigmes</span>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">Des chasses au trésor hebdomadaires avec des énigmes complexes, encourageant l'exploration, la collaboration et la résolution de problèmes en équipe.</p>
+
+                    <div class="feature-box">
+                        <h4>🎯 Déroulement</h4>
+                        <ul>
+                            <li><strong>Fréquence:</strong> 1 chasse au trésor par semaine (reset dimanche)</li>
+                            <li><strong>Annonce:</strong> Première énigme postée le lundi dans un panneau au spawn</li>
+                            <li><strong>Durée:</strong> 7 jours pour résoudre toutes les énigmes</li>
+                            <li><strong>Structure:</strong> 5-7 énigmes en chaîne, chacune mène à la suivante</li>
+                            <li><strong>Difficulté Progressive:</strong> Commence facile, devient très complexe</li>
+                            <li><strong>Collaboration:</strong> Les factions peuvent s'entraider (ou se trahir !)</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box">
+                        <h4>🧩 Types d'Énigmes</h4>
+                        <ul>
+                            <li><strong>Coordonnées Cryptées:</strong> Déchiffrer un code pour trouver des coordonnées</li>
+                            <li><strong>Lore du Serveur:</strong> Questions sur l'histoire/événements passés</li>
+                            <li><strong>Redstone Puzzles:</strong> Mécanismes à activer dans le bon ordre</li>
+                            <li><strong>Parkour Secret:</strong> Trouver et compléter un parcours caché</li>
+                            <li><strong>Craft Mystère:</strong> Découvrir une recette de craft spéciale</li>
+                            <li><strong>Énigmes Visuelles:</strong> Interpréter des motifs de blocs</li>
+                            <li><strong>Boss Mini:</strong> Vaincre un mini-boss pour obtenir un indice</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box">
+                        <h4>📍 Système d'Indices</h4>
+                        <ul>
+                            <li><strong>Indice 1:</strong> Gratuit après 24h si personne n'a trouvé</li>
+                            <li><strong>Indice 2:</strong> Disponible après 48h (coûte 1,000$)</li>
+                            <li><strong>Indice 3:</strong> Disponible après 72h (coûte 5,000$)</li>
+                            <li><strong>Solution Partielle:</strong> Après 5 jours, coordonnées approximatives révélées</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box" style="border-left-color: #ffd700;">
+                        <h4 style="color: #ffd700;">🏆 Récompenses</h4>
+                        <ul>
+                            <li><strong>1ère Faction:</strong> 100,000$ + items légendaires + titre "Chasseur de Trésors"</li>
+                            <li><strong>2ème Faction:</strong> 50,000$ + items épiques</li>
+                            <li><strong>3ème Faction:</strong> 25,000$ + items rares</li>
+                            <li><strong>Top 10:</strong> 5,000$ + XP bonus</li>
+                            <li><strong>Participation:</strong> Tous ceux qui terminent reçoivent un petit reward</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box" style="border-left-color: var(--success);">
+                        <h4 style="color: var(--success);">✨ Avantages</h4>
+                        <ul>
+                            <li><strong>Exploration:</strong> Force les joueurs à découvrir le monde</li>
+                            <li><strong>Cohésion:</strong> Les membres de faction doivent collaborer</li>
+                            <li><strong>Créativité:</strong> Énigmes variées évitent la monotonie</li>
+                            <li><strong>Accessible:</strong> Pas besoin d'équipement PvP, tout le monde peut participer</li>
+                            <li><strong>Rejouabilité:</strong> Nouvelles énigmes chaque semaine</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box">
+                        <h4>📊 Tracking</h4>
+                        <ul>
+                            <li><strong>/treasure progress:</strong> Voir quelle énigme votre faction a atteint</li>
+                            <li><strong>/treasure leaderboard:</strong> Classement des factions</li>
+                            <li><strong>/treasure hint:</strong> Acheter un indice pour l'énigme actuelle</li>
+                            <li><strong>GUI Interactif:</strong> Historique des énigmes résolues</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+            const savedTheme = localStorage.getItem('ef-theme') || 'dark';
+            html.setAttribute('data-theme', savedTheme);
+            document.querySelectorAll('.ef-theme-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.theme === savedTheme) btn.classList.add('active');
+                btn.addEventListener('click', () => {
+                    const theme = btn.dataset.theme;
+                    html.setAttribute('data-theme', theme);
+                    localStorage.setItem('ef-theme', theme);
+                    document.querySelectorAll('.ef-theme-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+            document.querySelectorAll('.ef-lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.ef-lang-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

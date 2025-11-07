@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistiques & Leaderboards - Erinium Faction</title>
+    <link rel="stylesheet" href="common-themes.css">
+    <style>
+        * {margin: 0;padding: 0;box-sizing: border-box;}
+        body {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background: var(--bg-primary);color: var(--text-primary);line-height: 1.6;}
+        .container {max-width: 1400px;margin: 0 auto;padding: 40px 30px;}
+        .page-header {text-align: center;margin-bottom: 60px;padding: 40px 20px;background: var(--gradient-header);border-radius: 20px;box-shadow: var(--shadow-lg);}
+        .page-header h1 {font-size: 3em;margin-bottom: 15px;color: #ffffff;text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);}
+        .page-header p {font-size: 1.2em;color: rgba(255, 255, 255, 0.9);max-width: 800px;margin: 0 auto;}
+        .stats-main {background: var(--bg-card);border: 2px solid var(--border-color);border-radius: 16px;padding: 40px;box-shadow: var(--shadow-lg);margin-bottom: 40px;}
+        .stats-grid {display: grid;grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));gap: 25px;margin: 30px 0;}
+        .stat-card {background: var(--bg-secondary);border: 2px solid var(--border-color);border-radius: 12px;padding: 25px;text-align: center;transition: all 0.3s ease;}
+        .stat-card:hover {transform: translateY(-3px);border-color: var(--accent-2);box-shadow: var(--shadow-md);}
+        .stat-icon {font-size: 3em;margin-bottom: 15px;}
+        .stat-title {font-size: 1.1em;color: var(--text-secondary);margin-bottom: 10px;text-transform: uppercase;letter-spacing: 1px;}
+        .stat-value {font-size: 2em;color: var(--accent-2);font-weight: 700;}
+        .feature-box {background: var(--bg-secondary);border-left: 4px solid var(--accent-2);padding: 20px;border-radius: 8px;margin: 20px 0;}
+        .feature-box h3 {color: var(--accent-2);margin-bottom: 15px;}
+        .feature-box ul {list-style: none;padding: 0;}
+        .feature-box li {padding: 10px 0;color: var(--text-secondary);border-bottom: 1px solid var(--border-color);}
+        .feature-box li:last-child {border-bottom: none;}
+        @media (max-width: 768px) {.page-header h1 {font-size: 2em;}}
+    </style>
+</head>
+<body>
+    <div class="ef-controls-bar">
+        <div class="ef-controls-left">
+            <a href="ideas-index.html" class="ef-home-btn">← Retour aux Idées</a>
+            <a href="index.html" class="ef-home-btn">🏠 Accueil</a>
+        </div>
+        <div class="ef-controls-right">
+            <div class="ef-control-group">
+                <span class="ef-control-label">Thème</span>
+                <button class="ef-theme-btn" data-theme="light">☀️ Clair</button>
+                <button class="ef-theme-btn active" data-theme="dark">🌙 Sombre</button>
+                <button class="ef-theme-btn" data-theme="erinium">✨ Erinium</button>
+            </div>
+            <div class="ef-control-group">
+                <span class="ef-control-label">Langue</span>
+                <button class="ef-lang-btn active" data-lang="fr">🇫🇷 FR</button>
+                <button class="ef-lang-btn" data-lang="en">🇬🇧 EN</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="ef-content-wrapper">
+        <div class="container">
+            <div class="page-header">
+                <h1>📊 Statistiques & Leaderboards</h1>
+                <p>Système complet de tracking des performances PvP avec classements et statistiques détaillées.</p>
+            </div>
+
+            <div class="stats-main">
+                <h2 style="text-align: center; color: var(--accent-2); font-size: 2.5em; margin-bottom: 40px;">Statistiques de Combat Détaillées</h2>
+
+                <p style="color: var(--text-secondary); font-size: 1.1em; text-align: center; margin-bottom: 40px;">
+                    Un système de tracking avancé qui enregistre toutes les performances PvP de chaque joueur, avec des classements globaux et des statistiques personnelles.
+                </p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">⚔️</div>
+                        <div class="stat-title">Kills PvP</div>
+                        <div class="stat-value">1,247</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💀</div>
+                        <div class="stat-title">Morts</div>
+                        <div class="stat-value">523</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-title">K/D Ratio</div>
+                        <div class="stat-value">2.38</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🗡️</div>
+                        <div class="stat-title">Dégâts Infligés</div>
+                        <div class="stat-value">158.4K</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🛡️</div>
+                        <div class="stat-title">Dégâts Reçus</div>
+                        <div class="stat-value">87.2K</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-title">Précision</div>
+                        <div class="stat-value">78%</div>
+                    </div>
+                </div>
+
+                <div class="feature-box">
+                    <h3>📊 Statistiques Trackées</h3>
+                    <ul>
+                        <li><strong>Kills PvP:</strong> Nombre total d'éliminations de joueurs</li>
+                        <li><strong>Morts:</strong> Nombre de fois où le joueur est mort en PvP</li>
+                        <li><strong>K/D Ratio:</strong> Ratio kills/morts (indicateur de performance)</li>
+                        <li><strong>Dégâts Infligés:</strong> Total des dégâts causés à d'autres joueurs</li>
+                        <li><strong>Dégâts Reçus:</strong> Total des dégâts subis en combat</li>
+                        <li><strong>Killstreaks:</strong> Plus longue série de kills sans mourir</li>
+                        <li><strong>Arme favorite:</strong> Arme avec laquelle le joueur tue le plus</li>
+                        <li><strong>Victime principale:</strong> Joueur le plus tué par le joueur</li>
+                        <li><strong>Némésis:</strong> Joueur qui tue le plus le joueur</li>
+                        <li><strong>Temps en combat:</strong> Durée totale passée en mode combat</li>
+                        <li><strong>Duels gagnés/perdus:</strong> Statistiques séparées pour les duels</li>
+                        <li><strong>Bounties complétées:</strong> Primes réclamées avec succès</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <h3>🏆 Classements par Catégorie</h3>
+                    <ul>
+                        <li><strong>Top Kills:</strong> Joueurs avec le plus d'éliminations</li>
+                        <li><strong>Meilleur K/D:</strong> Ratio kills/morts le plus élevé (minimum 100 kills)</li>
+                        <li><strong>Plus de Dégâts:</strong> Joueurs infligeant le plus de dégâts</li>
+                        <li><strong>Killstreak Record:</strong> Plus longue série de kills active</li>
+                        <li><strong>Chasseurs de Primes:</strong> Plus de bounties complétées</li>
+                        <li><strong>Duelistes:</strong> Plus de duels gagnés</li>
+                        <li><strong>Survivants:</strong> Joueurs avec le moins de morts (minimum level 20)</li>
+                        <li><strong>Combattants Actifs:</strong> Plus de temps passé en combat</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <h3>🖥️ Interface & Accès</h3>
+                    <ul>
+                        <li><strong>/stats:</strong> Ouvre le GUI personnel avec toutes les statistiques</li>
+                        <li><strong>/stats &lt;joueur&gt;:</strong> Voir les stats d'un autre joueur</li>
+                        <li><strong>/leaderboard [catégorie]:</strong> Affiche le classement global</li>
+                        <li><strong>GUI Interactif:</strong> Navigation par onglets (Combat, Duels, Bounties, etc.)</li>
+                        <li><strong>Graphiques:</strong> Évolution des stats sur 7/30 jours</li>
+                        <li><strong>Comparaison:</strong> Se comparer à un autre joueur dans le GUI</li>
+                        <li><strong>Export:</strong> Exporter ses stats en fichier texte</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box" style="border-left-color: var(--success);">
+                    <h3 style="color: var(--success);">✅ Récompenses Liées aux Stats</h3>
+                    <ul>
+                        <li><strong>Top 1 Kills:</strong> Titre "Tueur en Série" + 10,000$</li>
+                        <li><strong>K/D > 3.0:</strong> Titre "Guerrier d'Élite"</li>
+                        <li><strong>Killstreak 10+:</strong> Annonce serveur + XP bonus</li>
+                        <li><strong>100 Kills:</strong> Débloquer cape "Vétéran du Combat"</li>
+                        <li><strong>Top 10 toutes catégories:</strong> Badge spécial dans le chat</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box" style="border-left-color: var(--warning);">
+                    <h3 style="color: var(--warning);">⚙️ Configuration et Équité</h3>
+                    <ul>
+                        <li><strong>Reset Saison:</strong> Stats réinitialisées à chaque nouvelle saison (historique conservé)</li>
+                        <li><strong>Anti-Abuse:</strong> Kills entre alts ou farm détectés et non comptés</li>
+                        <li><strong>Cooldown:</strong> Tuer le même joueur plusieurs fois en 5 min = 1 seul kill compté</li>
+                        <li><strong>Pondération:</strong> Kills sur joueurs de niveau similaire valent plus</li>
+                        <li><strong>Privacité:</strong> Option pour rendre ses stats privées (/stats privacy)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+            const savedTheme = localStorage.getItem('ef-theme') || 'dark';
+            html.setAttribute('data-theme', savedTheme);
+            document.querySelectorAll('.ef-theme-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.theme === savedTheme) btn.classList.add('active');
+                btn.addEventListener('click', () => {
+                    const theme = btn.dataset.theme;
+                    html.setAttribute('data-theme', theme);
+                    localStorage.setItem('ef-theme', theme);
+                    document.querySelectorAll('.ef-theme-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+            document.querySelectorAll('.ef-lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.ef-lang-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

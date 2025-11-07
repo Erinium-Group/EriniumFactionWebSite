@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gameplay PvP & Faction - Erinium Faction</title>
+    <link rel="stylesheet" href="common-themes.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 30px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 20px;
+            background: var(--gradient-header);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .page-header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: #ffffff;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-header p {
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .ideas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .idea-card {
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .idea-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-primary);
+        }
+
+        .idea-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-2);
+        }
+
+        .idea-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .idea-icon {
+            font-size: 2.5em;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        .idea-title {
+            flex: 1;
+        }
+
+        .idea-title h2 {
+            font-size: 1.8em;
+            color: var(--accent-2);
+            margin-bottom: 5px;
+        }
+
+        .idea-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--accent-1);
+            color: #ffffff;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .idea-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .idea-content ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .idea-content li {
+            margin: 10px 0;
+            position: relative;
+        }
+
+        .idea-content li::marker {
+            color: var(--accent-2);
+        }
+
+        .idea-benefits {
+            margin-top: 20px;
+            padding: 15px;
+            background: var(--bg-secondary);
+            border-left: 4px solid var(--success);
+            border-radius: 8px;
+        }
+
+        .idea-benefits h4 {
+            color: var(--success);
+            margin-bottom: 8px;
+            font-size: 1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .idea-benefits p {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        .stats-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            margin: 5px;
+            font-size: 0.9em;
+            border: 1px solid var(--border-color);
+        }
+
+        .stats-label {
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .stats-value {
+            color: var(--accent-2);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .ideas-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 2em;
+            }
+
+            .idea-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Controls Bar -->
+    <div class="ef-controls-bar">
+        <div class="ef-controls-left">
+            <a href="ideas-index.html" class="ef-home-btn">← Retour aux Idées</a>
+            <a href="index.html" class="ef-home-btn">🏠 Accueil</a>
+        </div>
+        <div class="ef-controls-right">
+            <div class="ef-control-group">
+                <span class="ef-control-label">Thème</span>
+                <button class="ef-theme-btn" data-theme="light">☀️ Clair</button>
+                <button class="ef-theme-btn active" data-theme="dark">🌙 Sombre</button>
+                <button class="ef-theme-btn" data-theme="erinium">✨ Erinium</button>
+            </div>
+            <div class="ef-control-group">
+                <span class="ef-control-label">Langue</span>
+                <button class="ef-lang-btn active" data-lang="fr">🇫🇷 FR</button>
+                <button class="ef-lang-btn" data-lang="en">🇬🇧 EN</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="ef-content-wrapper">
+        <div class="container">
+            <div class="page-header">
+                <h1>⚔️ Gameplay PvP & Faction</h1>
+                <p>Systèmes stratégiques pour améliorer le PvP, encourager les combats organisés et ajouter de la profondeur au gameplay faction.</p>
+            </div>
+
+            <div class="ideas-grid">
+                <!-- Idée 1: Système de Siège -->
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <span class="idea-icon">🏰</span>
+                        <div class="idea-title">
+                            <h2>Système de Siège de Territoire</h2>
+                            <span class="idea-tag">Stratégie</span>
+                        </div>
+                    </div>
+                    <div class="idea-content">
+                        <p><strong>Concept :</strong> Les factions peuvent lancer un "siège" stratégique sur un chunk ennemi pour l'affaiblir et faciliter sa capture.</p>
+
+                        <ul>
+                            <li><strong>Lancement du siège :</strong> Commande <code>/f siege &lt;faction&gt;</code> dans un chunk ennemi</li>
+                            <li><strong>Durée :</strong> 30 minutes - La faction doit maintenir sa présence dans la zone</li>
+                            <li><strong>Condition :</strong> Au moins 3 membres de la faction doivent rester dans le chunk</li>
+                            <li><strong>Résultat :</strong> Si réussi, le chunk est "affaibli" pendant 24h et peut être réclamé avec 50% de power en moins</li>
+                            <li><strong>Notification :</strong> La faction défenderesse reçoit une alerte immédiate</li>
+                        </ul>
+
+                        <div class="stats-badge">
+                            <span class="stats-label">Cooldown:</span>
+                            <span class="stats-value">6 heures</span>
+                        </div>
+                        <div class="stats-badge">
+                            <span class="stats-label">Coût:</span>
+                            <span class="stats-value">5000$ + 10 Power</span>
+                        </div>
+
+                        <div class="idea-benefits">
+                            <h4>✅ Avantages</h4>
+                            <p>Ajoute de la stratégie au système de territoire, encourage les défenses coordonnées, crée des opportunités de PvP massif sans déséquilibrer le jeu.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Idée 2: Points de Capture Dynamiques -->
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <span class="idea-icon">📍</span>
+                        <div class="idea-title">
+                            <h2>Points de Capture Dynamiques</h2>
+                            <span class="idea-tag">PvP Organisé</span>
+                        </div>
+                    </div>
+                    <div class="idea-content">
+                        <p><strong>Concept :</strong> Des points stratégiques apparaissent aléatoirement sur la map pour encourager le PvP organisé et offrir des récompenses.</p>
+
+                        <ul>
+                            <li><strong>Apparition :</strong> Toutes les 2 heures, un "point stratégique" spawn dans une zone neutre</li>
+                            <li><strong>Objectif :</strong> Les factions doivent capturer et tenir le point pendant 10 minutes</li>
+                            <li><strong>Mécanique :</strong> Un joueur doit rester dans un rayon de 5 blocs pour "capturer"</li>
+                            <li><strong>Contestation :</strong> Si plusieurs factions sont présentes, la capture est bloquée</li>
+                            <li><strong>Indication visuelle :</strong> Particules, beacon et waypoint pour tous les joueurs</li>
+                        </ul>
+
+                        <div class="stats-badge">
+                            <span class="stats-label">Durée de capture:</span>
+                            <span class="stats-value">10 minutes</span>
+                        </div>
+                        <div class="stats-badge">
+                            <span class="stats-label">Fréquence:</span>
+                            <span class="stats-value">Toutes les 2h</span>
+                        </div>
+
+                        <div class="idea-benefits">
+                            <h4>🎁 Récompenses</h4>
+                            <p>
+                                • XP Faction: +500<br>
+                                • Argent: 2000-5000$ pour tous les participants<br>
+                                • Power temporaire: +5 pendant 1 heure<br>
+                                • Items rares possibles (5% de chance)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Idée 3: Système de Bounty -->
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <span class="idea-icon">💰</span>
+                        <div class="idea-title">
+                            <h2>Système de Bounty (Prime)</h2>
+                            <span class="idea-tag">Chasse</span>
+                        </div>
+                    </div>
+                    <div class="idea-content">
+                        <p><strong>Concept :</strong> Les joueurs peuvent placer des primes sur la tête de leurs ennemis, créant une motivation économique pour le PvP.</p>
+
+                        <ul>
+                            <li><strong>Placer une prime :</strong> <code>/bounty add &lt;joueur&gt; &lt;montant&gt;</code> (minimum 1000$)</li>
+                            <li><strong>Accumulation :</strong> Plusieurs joueurs peuvent ajouter à la même prime</li>
+                            <li><strong>Récompense :</strong> Le tueur récupère 100% de la prime + bonus XP job "Hunter"</li>
+                            <li><strong>Visualisation :</strong> GUI accessible avec <code>/bounty list</code> montrant toutes les primes actives</li>
+                            <li><strong>Notification :</strong> Le joueur ciblé est informé qu'une prime a été placée</li>
+                            <li><strong>Expiration :</strong> Les primes expirent après 7 jours si non réclamées</li>
+                        </ul>
+
+                        <div class="stats-badge">
+                            <span class="stats-label">Prime minimum:</span>
+                            <span class="stats-value">1000$</span>
+                        </div>
+                        <div class="stats-badge">
+                            <span class="stats-label">Commission:</span>
+                            <span class="stats-value">10% du montant</span>
+                        </div>
+
+                        <div class="idea-benefits">
+                            <h4>✅ Avantages</h4>
+                            <p>Crée une économie de chasseur de primes, ajoute de la motivation pour le PvP ciblé, intégration parfaite avec le système de Jobs (Hunter job gagne bonus XP).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Theme Switcher
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+            const savedTheme = localStorage.getItem('ef-theme') || 'dark';
+            html.setAttribute('data-theme', savedTheme);
+
+            document.querySelectorAll('.ef-theme-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.theme === savedTheme) {
+                    btn.classList.add('active');
+                }
+
+                btn.addEventListener('click', () => {
+                    const theme = btn.dataset.theme;
+                    html.setAttribute('data-theme', theme);
+                    localStorage.setItem('ef-theme', theme);
+
+                    document.querySelectorAll('.ef-theme-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+
+            // Language Switcher (placeholder for now)
+            document.querySelectorAll('.ef-lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.ef-lang-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    // TODO: Implement language switching
+                });
+            });
+        });
+    </script>
+</body>
+</html>

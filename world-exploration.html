@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monde & Exploration - Erinium Faction</title>
+    <link rel="stylesheet" href="common-themes.css">
+    <style>
+        * {margin: 0;padding: 0;box-sizing: border-box;}
+        body {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background: var(--bg-primary);color: var(--text-primary);line-height: 1.6;}
+        .container {max-width: 1400px;margin: 0 auto;padding: 40px 30px;}
+        .page-header {text-align: center;margin-bottom: 60px;padding: 40px 20px;background: var(--gradient-header);border-radius: 20px;box-shadow: var(--shadow-lg);}
+        .page-header h1 {font-size: 3em;margin-bottom: 15px;color: #ffffff;text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);}
+        .page-header p {font-size: 1.2em;color: rgba(255, 255, 255, 0.9);max-width: 800px;margin: 0 auto;}
+        .world-grid {display: grid;grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));gap: 30px;}
+        .world-card {background: var(--bg-card);border: 2px solid var(--border-color);border-radius: 16px;padding: 35px;box-shadow: var(--shadow-md);transition: all 0.3s ease;position: relative;overflow: hidden;}
+        .world-card::before {content: '';position: absolute;top: 0;left: 0;right: 0;height: 5px;background: var(--gradient-primary);}
+        .world-card:hover {transform: translateY(-5px);box-shadow: var(--shadow-lg);border-color: var(--accent-2);}
+        .world-header {display: flex;align-items: center;gap: 20px;margin-bottom: 25px;padding-bottom: 20px;border-bottom: 2px solid var(--border-color);}
+        .world-icon {font-size: 3.5em;}
+        .world-title h2 {font-size: 1.9em;color: var(--accent-2);margin-bottom: 8px;}
+        .world-tag {display: inline-block;padding: 5px 14px;background: var(--accent-1);color: #ffffff;border-radius: 20px;font-size: 0.75em;font-weight: 600;text-transform: uppercase;}
+        .features-list {list-style: none;padding: 0;}
+        .features-list li {padding: 12px 0;color: var(--text-secondary);border-bottom: 1px solid var(--border-color);}
+        .event-box {background: var(--bg-secondary);border-left: 4px solid var(--accent-2);padding: 20px;border-radius: 8px;margin: 20px 0;}
+        .event-box h4 {color: var(--accent-2);margin-bottom: 12px;}
+        @media (max-width: 768px) {.world-grid {grid-template-columns: 1fr;}.page-header h1 {font-size: 2em;}}
+    </style>
+</head>
+<body>
+    <div class="ef-controls-bar">
+        <div class="ef-controls-left">
+            <a href="ideas-index.html" class="ef-home-btn">← Retour aux Idées</a>
+            <a href="index.html" class="ef-home-btn">🏠 Accueil</a>
+        </div>
+        <div class="ef-controls-right">
+            <div class="ef-control-group">
+                <span class="ef-control-label">Thème</span>
+                <button class="ef-theme-btn" data-theme="light">☀️ Clair</button>
+                <button class="ef-theme-btn active" data-theme="dark">🌙 Sombre</button>
+                <button class="ef-theme-btn" data-theme="erinium">✨ Erinium</button>
+            </div>
+            <div class="ef-control-group">
+                <span class="ef-control-label">Langue</span>
+                <button class="ef-lang-btn active" data-lang="fr">🇫🇷 FR</button>
+                <button class="ef-lang-btn" data-lang="en">🇬🇧 EN</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="ef-content-wrapper">
+        <div class="container">
+            <div class="page-header">
+                <h1>🌍 Monde & Exploration</h1>
+                <p>Événements dynamiques et zones stratégiques pour enrichir l'expérience de jeu et l'exploration.</p>
+            </div>
+
+            <div class="world-grid">
+                <div class="world-card">
+                    <div class="world-header">
+                        <span class="world-icon">⛈️</span>
+                        <div class="world-title">
+                            <h2>Événements Météo PvP</h2>
+                            <span class="world-tag">Dynamique</span>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">Des événements météorologiques aléatoires qui modifient temporairement les conditions de jeu et créent des opportunités uniques.</p>
+
+                    <div class="event-box">
+                        <h4>🌑 Eclipse Sombre</h4>
+                        <ul class="features-list">
+                            <li><strong>Durée:</strong> 15 minutes</li>
+                            <li><strong>Effets:</strong> Mobs spawn partout (même avec torches), force et HP doublés</li>
+                            <li><strong>Récompenses:</strong> Drops des mobs doublés, XP x2</li>
+                            <li><strong>PvP:</strong> Bonus de dégâts +20% dans les zones sombres</li>
+                        </ul>
+                    </div>
+
+                    <div class="event-box">
+                        <h4>✨ Tempête de Mana</h4>
+                        <ul class="features-list">
+                            <li><strong>Durée:</strong> 20 minutes</li>
+                            <li><strong>Effets:</strong> Régénération mana x3, cooldowns des sorts -50%</li>
+                            <li><strong>Récompenses:</strong> Cristaux de mana rares peuvent spawn</li>
+                            <li><strong>PvP:</strong> Les sorts magiques sont amplifiés</li>
+                        </ul>
+                    </div>
+
+                    <div class="event-box">
+                        <h4>⚡ Orage Électrique</h4>
+                        <ul class="features-list">
+                            <li><strong>Durée:</strong> 10 minutes</li>
+                            <li><strong>Effets:</strong> Éclairs aléatoires, vitesse de mouvement +30%</li>
+                            <li><strong>Récompenses:</strong> Fragments d'électricité (craft items spéciaux)</li>
+                            <li><strong>PvP:</strong> Risque de foudre qui stun 2 secondes</li>
+                        </ul>
+                    </div>
+
+                    <div class="event-box">
+                        <h4>🌟 Pluie d'Étoiles</h4>
+                        <ul class="features-list">
+                            <li><strong>Durée:</strong> 30 minutes</li>
+                            <li><strong>Effets:</strong> Tous gains XP/Money +50%</li>
+                            <li><strong>Récompenses:</strong> Étoiles tombantes (items cosmétiques)</li>
+                            <li><strong>PvP:</strong> Healing naturel augmenté</li>
+                        </ul>
+                    </div>
+
+                    <p style="margin-top: 20px; color: var(--text-secondary); background: var(--bg-secondary); padding: 15px; border-radius: 8px;">
+                        <strong>Fréquence:</strong> 1 événement toutes les 3-4 heures<br>
+                        <strong>Annonce:</strong> Message serveur 5 minutes avant le début<br>
+                        <strong>Zone:</strong> Affecte tout le serveur simultanément
+                    </p>
+                </div>
+
+                <div class="world-card">
+                    <div class="world-header">
+                        <span class="world-icon">🏰</span>
+                        <div class="world-title">
+                            <h2>Système de Outpost</h2>
+                            <span class="world-tag">Stratégie</span>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">Des avant-postes achetables en bordure des warzones, parfaits pour créer des pièges, des bases avancées ou des points de ravitaillement stratégiques.</p>
+
+                    <div class="event-box">
+                        <h4>📍 Caractéristiques des Outposts</h4>
+                        <ul class="features-list">
+                            <li><strong>Emplacement:</strong> Zones désignées en bordure de warzone (proches du PvP)</li>
+                            <li><strong>Taille:</strong> 3x3 chunks maximum par outpost</li>
+                            <li><strong>Limite:</strong> 2 outposts par faction (en plus du territoire principal)</li>
+                            <li><strong>Protection:</strong> Niveau de protection réduit (70% du territoire normal)</li>
+                            <li><strong>Distance:</strong> Minimum 500 blocs du territoire principal</li>
+                        </ul>
+                    </div>
+
+                    <div class="event-box">
+                        <h4>💰 Coûts et Maintenance</h4>
+                        <ul class="features-list">
+                            <li><strong>Achat initial:</strong> 50,000$ par outpost</li>
+                            <li><strong>Maintenance:</strong> 5,000$ par semaine (auto-débité de la banque faction)</li>
+                            <li><strong>Pénalité abandon:</strong> Si non payé pendant 2 semaines, l'outpost est libéré</li>
+                            <li><strong>Upgrade:</strong> Possibilité d'améliorer la protection (+10,000$ par niveau)</li>
+                        </ul>
+                    </div>
+
+                    <div class="event-box">
+                        <h4>⚙️ Utilisations Stratégiques</h4>
+                        <ul class="features-list">
+                            <li><strong>Base de Raid:</strong> Point de départ proche des ennemis pour attaques coordonnées</li>
+                            <li><strong>Pièges:</strong> Construire des systèmes de pièges pour ralentir/éliminer les intrus</li>
+                            <li><strong>Poste de Guet:</strong> Tours d'observation pour surveiller les mouvements ennemis</li>
+                            <li><strong>Cache d'Équipement:</strong> Stocker des kits PvP de secours pour réapparitions rapides</li>
+                            <li><strong>Point de Téléportation:</strong> /f home outpost1 pour TP rapide</li>
+                        </ul>
+                    </div>
+
+                    <div class="event-box" style="border-left-color: var(--warning);">
+                        <h4 style="color: var(--warning);">⚠️ Risques</h4>
+                        <ul class="features-list">
+                            <li>Plus vulnérable aux raids que le territoire principal</li>
+                            <li>Peut être capturé si la faction perd trop de power</li>
+                            <li>Coûts de maintenance peuvent devenir lourds</li>
+                            <li>Exposition élevée au PvP constant</li>
+                        </ul>
+                    </div>
+
+                    <div class="event-box" style="border-left-color: var(--success);">
+                        <h4 style="color: var(--success);">✅ Avantages</h4>
+                        <ul class="features-list">
+                            <li>Présence stratégique proche des zones de combat</li>
+                            <li>Intimidation psychologique des factions rivales</li>
+                            <li>Options tactiques accrues pour les sièges</li>
+                            <li>Source de revenus si utilisé comme "péage" (demander tribut pour passage)</li>
+                        </ul>
+                    </div>
+
+                    <p style="margin-top: 20px; color: var(--text-secondary); background: var(--bg-secondary); padding: 15px; border-radius: 8px;">
+                        <strong>Commandes:</strong><br>
+                        /f outpost buy - Acheter un outpost dans la zone actuelle<br>
+                        /f outpost list - Voir vos outposts<br>
+                        /f outpost home &lt;nom&gt; - Se téléporter à un outpost
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+            const savedTheme = localStorage.getItem('ef-theme') || 'dark';
+            html.setAttribute('data-theme', savedTheme);
+            document.querySelectorAll('.ef-theme-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.theme === savedTheme) btn.classList.add('active');
+                btn.addEventListener('click', () => {
+                    const theme = btn.dataset.theme;
+                    html.setAttribute('data-theme', theme);
+                    localStorage.setItem('ef-theme', theme);
+                    document.querySelectorAll('.ef-theme-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+            document.querySelectorAll('.ef-lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.ef-lang-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

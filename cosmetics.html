@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmétiques & Personnalisation - Erinium Faction</title>
+    <link rel="stylesheet" href="common-themes.css">
+    <style>
+        * {margin: 0;padding: 0;box-sizing: border-box;}
+        body {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background: var(--bg-primary);color: var(--text-primary);line-height: 1.6;}
+        .container {max-width: 1400px;margin: 0 auto;padding: 40px 30px;}
+        .page-header {text-align: center;margin-bottom: 60px;padding: 40px 20px;background: var(--gradient-header);border-radius: 20px;box-shadow: var(--shadow-lg);}
+        .page-header h1 {font-size: 3em;margin-bottom: 15px;color: #ffffff;text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);}
+        .page-header p {font-size: 1.2em;color: rgba(255, 255, 255, 0.9);max-width: 800px;margin: 0 auto;}
+        .cosmetic-grid {display: grid;grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));gap: 30px;}
+        .cosmetic-card {background: var(--bg-card);border: 2px solid var(--border-color);border-radius: 16px;padding: 35px;box-shadow: var(--shadow-md);transition: all 0.3s ease;position: relative;overflow: hidden;}
+        .cosmetic-card::before {content: '';position: absolute;top: 0;left: 0;right: 0;height: 5px;background: linear-gradient(90deg, #f59e0b, #8b5cf6, #ec4899);}
+        .cosmetic-card:hover {transform: translateY(-5px);box-shadow: var(--shadow-lg);}
+        .cosmetic-header {display: flex;align-items: center;gap: 20px;margin-bottom: 25px;padding-bottom: 20px;border-bottom: 2px solid var(--border-color);}
+        .cosmetic-icon {font-size: 3.5em;}
+        .cosmetic-title h2 {font-size: 1.9em;color: var(--accent-3);margin-bottom: 8px;}
+        .cosmetic-tag {display: inline-block;padding: 5px 14px;background: var(--accent-3);color: #ffffff;border-radius: 20px;font-size: 0.75em;font-weight: 600;text-transform: uppercase;}
+        .feature-box {background: var(--bg-secondary);border-left: 4px solid var(--accent-2);padding: 20px;border-radius: 8px;margin: 20px 0;}
+        .feature-box h4 {color: var(--accent-2);margin-bottom: 12px;}
+        .feature-box ul {list-style: none;padding: 0;}
+        .feature-box li {padding: 8px 0;color: var(--text-secondary);border-bottom: 1px solid var(--border-color);}
+        .feature-box li:last-child {border-bottom: none;}
+        @media (max-width: 768px) {.cosmetic-grid {grid-template-columns: 1fr;}.page-header h1 {font-size: 2em;}}
+    </style>
+</head>
+<body>
+    <div class="ef-controls-bar">
+        <div class="ef-controls-left">
+            <a href="ideas-index.html" class="ef-home-btn">← Retour aux Idées</a>
+            <a href="index.html" class="ef-home-btn">🏠 Accueil</a>
+        </div>
+        <div class="ef-controls-right">
+            <div class="ef-control-group">
+                <span class="ef-control-label">Thème</span>
+                <button class="ef-theme-btn" data-theme="light">☀️ Clair</button>
+                <button class="ef-theme-btn active" data-theme="dark">🌙 Sombre</button>
+                <button class="ef-theme-btn" data-theme="erinium">✨ Erinium</button>
+            </div>
+            <div class="ef-control-group">
+                <span class="ef-control-label">Langue</span>
+                <button class="ef-lang-btn active" data-lang="fr">🇫🇷 FR</button>
+                <button class="ef-lang-btn" data-lang="en">🇬🇧 EN</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="ef-content-wrapper">
+        <div class="container">
+            <div class="page-header">
+                <h1>🎨 Cosmétiques & Personnalisation</h1>
+                <p>Systèmes pour personnaliser l'apparence des joueurs et des factions, créer une identité unique.</p>
+            </div>
+
+            <div class="cosmetic-grid">
+                <div class="cosmetic-card">
+                    <div class="cosmetic-header">
+                        <span class="cosmetic-icon">👑</span>
+                        <div class="cosmetic-title">
+                            <h2>Système de Titres</h2>
+                            <span class="cosmetic-tag">Prestige</span>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">Des titres débloquables qui s'affichent sous le pseudo du joueur, montrant ses accomplissements et sa progression.</p>
+
+                    <div class="feature-box">
+                        <h4>🏆 Catégories de Titres</h4>
+                        <ul>
+                            <li><strong>Achievements:</strong> "Le Conquérant" (10 territoires capturés), "Le Survivant" (100 morts évitées)</li>
+                            <li><strong>Jobs:</strong> "Maître Mineur" (Job Miner niveau 50), "Grand Alchimiste" (Job Alchemist max)</li>
+                            <li><strong>Réputation:</strong> "Seigneur de Guerre" (500 kills PvP), "Pacificateur" (0 kills mais niveau 30)</li>
+                            <li><strong>Saisons:</strong> "Champion S1", "Dominateur S2" (récompenses de fin de saison)</li>
+                            <li><strong>Événements:</strong> "Tueur de Dragon" (raid boss), "Chasseur de Trésors" (event complété)</li>
+                            <li><strong>Spéciaux:</strong> Titres exclusifs pour staff, fondateurs, événements limités</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box">
+                        <h4>⚙️ Fonctionnement</h4>
+                        <ul>
+                            <li><strong>Affichage:</strong> Visible sous le nom du joueur dans le TAB, chat et au-dessus de la tête</li>
+                            <li><strong>Sélection:</strong> /titles pour ouvrir le GUI de sélection</li>
+                            <li><strong>Preview:</strong> Voir le rendu avant d'équiper</li>
+                            <li><strong>Collection:</strong> Tous les titres débloqués sont sauvegardés</li>
+                            <li><strong>Couleurs:</strong> Certains titres ont des couleurs/gradients uniques</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box" style="border-left-color: var(--success);">
+                        <h4 style="color: var(--success);">✨ Exemples de Titres</h4>
+                        <ul>
+                            <li>🗡️ "Le Mineur" - Niveau 25+ en Mining job</li>
+                            <li>⚔️ "Chasseur de Primes" - 50 bounties complétées</li>
+                            <li>👑 "Seigneur de Guerre" - 500 kills PvP</li>
+                            <li>🏆 "Champion S[X]" - Top 1 fin de saison</li>
+                            <li>🐉 "Tueur de Dragon" - Raid boss vaincu</li>
+                            <li>💎 "Millionnaire" - 1M$ accumulé</li>
+                            <li>🏰 "Bâtisseur" - 10,000 blocs placés</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cosmetic-card">
+                    <div class="cosmetic-header">
+                        <span class="cosmetic-icon">🎨</span>
+                        <div class="cosmetic-title">
+                            <h2>Capes de Faction</h2>
+                            <span class="cosmetic-tag">Créativité</span>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">Un système de création de capes personnalisées pour les factions avec un éditeur graphique intégré.</p>
+
+                    <div class="feature-box">
+                        <h4>🖌️ Éditeur de Cape</h4>
+                        <ul>
+                            <li><strong>Canvas:</strong> Grille 64x32 pixels (taille standard Minecraft cape)</li>
+                            <li><strong>Sélecteur de couleur:</strong> Palette complète RGB + pipette</li>
+                            <li><strong>Outils:</strong> Pinceau, gomme, remplissage, ligne, rectangle, cercle</li>
+                            <li><strong>Calques:</strong> 3 calques pour designs complexes</li>
+                            <li><strong>Templates:</strong> Modèles de base (étoile, dragon, épée, etc.) pour partir</li>
+                            <li><strong>Preview 3D:</strong> Rotation du joueur pour voir le rendu en temps réel</li>
+                            <li><strong>Import:</strong> Possibilité d'importer une image existante (modération requise)</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box">
+                        <h4>💾 Sauvegarde et Application</h4>
+                        <ul>
+                            <li><strong>Stockage:</strong> Sauvegardé en PNG dans /faction_capes/[factionname].png côté serveur</li>
+                            <li><strong>Chargement:</strong> Cape chargée au login et appliquée automatiquement aux membres</li>
+                            <li><strong>ResourcePack:</strong> Génération auto d'un resourcepack léger envoyé au client</li>
+                            <li><strong>Cache:</strong> Système de cache pour réduire la charge serveur</li>
+                            <li><strong>Historique:</strong> 5 dernières versions sauvegardées (rollback possible)</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box">
+                        <h4>🔐 Permissions et Modération</h4>
+                        <ul>
+                            <li><strong>Édition:</strong> Seuls le leader et officers peuvent modifier la cape</li>
+                            <li><strong>Activation:</strong> Les membres peuvent choisir de porter ou non la cape faction</li>
+                            <li><strong>Modération:</strong> Staff peut review/bloquer les capes inappropriées</li>
+                            <li><strong>Report:</strong> Système de report pour contenu offensant</li>
+                            <li><strong>Backup:</strong> Auto-backup avant chaque modification</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box" style="border-left-color: var(--warning);">
+                        <h4 style="color: var(--warning);">⚠️ Limitations Techniques</h4>
+                        <ul>
+                            <li><strong>Taille:</strong> Maximum 64x32 pixels (standard Minecraft)</li>
+                            <li><strong>Format:</strong> PNG uniquement avec transparence supportée</li>
+                            <li><strong>Poids:</strong> Maximum 50KB par cape</li>
+                            <li><strong>Cooldown:</strong> Modification possible toutes les 24h</li>
+                            <li><strong>Validation:</strong> Scan automatique pour contenu inapproprié</li>
+                        </ul>
+                    </div>
+
+                    <p style="margin-top: 20px; color: var(--text-secondary); background: var(--bg-secondary); padding: 15px; border-radius: 8px;">
+                        <strong>Commandes:</strong><br>
+                        /f cape edit - Ouvrir l'éditeur de cape<br>
+                        /f cape toggle - Activer/désactiver sa cape faction<br>
+                        /f cape history - Voir l'historique des versions
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+            const savedTheme = localStorage.getItem('ef-theme') || 'dark';
+            html.setAttribute('data-theme', savedTheme);
+            document.querySelectorAll('.ef-theme-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.theme === savedTheme) btn.classList.add('active');
+                btn.addEventListener('click', () => {
+                    const theme = btn.dataset.theme;
+                    html.setAttribute('data-theme', theme);
+                    localStorage.setItem('ef-theme', theme);
+                    document.querySelectorAll('.ef-theme-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+            document.querySelectorAll('.ef-lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.ef-lang-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

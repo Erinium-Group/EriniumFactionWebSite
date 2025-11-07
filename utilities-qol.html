@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utilitaires & Qualité de Vie - Erinium Faction</title>
+    <link rel="stylesheet" href="common-themes.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 30px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 20px;
+            background: var(--gradient-header);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .page-header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: #ffffff;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-header p {
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .utilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+        }
+
+        .utility-card {
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .utility-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-primary);
+        }
+
+        .utility-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-2);
+        }
+
+        .utility-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .utility-icon {
+            font-size: 3.5em;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        .utility-title {
+            flex: 1;
+        }
+
+        .utility-title h2 {
+            font-size: 1.9em;
+            color: var(--accent-2);
+            margin-bottom: 8px;
+        }
+
+        .utility-tag {
+            display: inline-block;
+            padding: 5px 14px;
+            background: var(--accent-1);
+            color: #ffffff;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .utility-description {
+            color: var(--text-secondary);
+            font-size: 1.05em;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .features-section {
+            margin: 20px 0;
+        }
+
+        .features-section h3 {
+            color: var(--accent-1);
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features-list li {
+            padding: 12px 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: start;
+            gap: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.2em;
+            flex-shrink: 0;
+        }
+
+        .command-box {
+            background: var(--bg-secondary);
+            border-left: 4px solid var(--accent-2);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .command-box h4 {
+            color: var(--accent-2);
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .command-box code {
+            color: var(--text-accent);
+            font-size: 1.1em;
+            display: block;
+            padding: 5px 0;
+        }
+
+        .use-cases {
+            background: var(--bg-secondary);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .use-cases h4 {
+            color: var(--success);
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .use-cases ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .use-cases li {
+            padding: 8px 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: start;
+            gap: 10px;
+        }
+
+        .use-cases li::before {
+            content: '→';
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .stats-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .stat-badge {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 0.9em;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .stat-value {
+            color: var(--accent-2);
+            font-weight: 700;
+            margin-left: 8px;
+        }
+
+        .permissions-box {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+            border: 2px solid var(--warning);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .permissions-box h4 {
+            color: var(--warning);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .permissions-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .permissions-box li {
+            padding: 8px 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .permission-level {
+            background: var(--warning);
+            color: #000;
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .utilities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 2em;
+            }
+
+            .utility-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Controls Bar -->
+    <div class="ef-controls-bar">
+        <div class="ef-controls-left">
+            <a href="ideas-index.html" class="ef-home-btn">← Retour aux Idées</a>
+            <a href="index.html" class="ef-home-btn">🏠 Accueil</a>
+        </div>
+        <div class="ef-controls-right">
+            <div class="ef-control-group">
+                <span class="ef-control-label">Thème</span>
+                <button class="ef-theme-btn" data-theme="light">☀️ Clair</button>
+                <button class="ef-theme-btn active" data-theme="dark">🌙 Sombre</button>
+                <button class="ef-theme-btn" data-theme="erinium">✨ Erinium</button>
+            </div>
+            <div class="ef-control-group">
+                <span class="ef-control-label">Langue</span>
+                <button class="ef-lang-btn active" data-lang="fr">🇫🇷 FR</button>
+                <button class="ef-lang-btn" data-lang="en">🇬🇧 EN</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="ef-content-wrapper">
+        <div class="container">
+            <div class="page-header">
+                <h1>🛠️ Utilitaires & Qualité de Vie</h1>
+                <p>Outils essentiels pour améliorer la coordination, la communication et la gestion des factions au quotidien.</p>
+            </div>
+
+            <div class="utilities-grid">
+                <!-- Rally System -->
+                <div class="utility-card">
+                    <div class="utility-header">
+                        <span class="utility-icon">🚩</span>
+                        <div class="utility-title">
+                            <h2>Système de Signaux de Ralliement</h2>
+                            <span class="utility-tag">Coordination</span>
+                        </div>
+                    </div>
+
+                    <p class="utility-description">
+                        Un système de signalisation permettant aux leaders de faction de convoquer rapidement leurs membres pour des défenses d'urgence ou des attaques coordonnées.
+                    </p>
+
+                    <div class="command-box">
+                        <h4>📝 Commandes</h4>
+                        <code>/f rally [message]</code>
+                        <code>/f rally cancel</code>
+                    </div>
+
+                    <div class="features-section">
+                        <h3>⚙️ Fonctionnalités</h3>
+                        <ul class="features-list">
+                            <li><strong>Item "Flare"</strong> : Item consommable qui peut être lancé pour créer un point de ralliement visuel</li>
+                            <li><strong>Notification Push</strong> : Tous les membres en ligne reçoivent une notification urgente avec son distinctif</li>
+                            <li><strong>Waypoint Temporaire</strong> : Un marqueur apparaît sur la carte/HUD de tous les membres pendant 10 minutes</li>
+                            <li><strong>Particules Visuelles</strong> : Faisceau de lumière coloré visible à distance pour guider les membres</li>
+                            <li><strong>Message Personnalisé</strong> : Le leader peut ajouter un message contextuel ("Défense base!", "Attaque Faction X")</li>
+                            <li><strong>Historique</strong> : Les 5 derniers rallies sont conservés dans /f rally history</li>
+                        </ul>
+                    </div>
+
+                    <div class="stats-row">
+                        <div class="stat-badge">
+                            <span class="stat-label">Cooldown:</span>
+                            <span class="stat-value">10-15 minutes</span>
+                        </div>
+                        <div class="stat-badge">
+                            <span class="stat-label">Durée du waypoint:</span>
+                            <span class="stat-value">10 minutes</span>
+                        </div>
+                        <div class="stat-badge">
+                            <span class="stat-label">Portée visuelle:</span>
+                            <span class="stat-value">500 blocs</span>
+                        </div>
+                    </div>
+
+                    <div class="use-cases">
+                        <h4>💡 Cas d'Usage</h4>
+                        <ul>
+                            <li>Défense urgente lors d'un raid ennemi</li>
+                            <li>Coordination d'une attaque surprise</li>
+                            <li>Rassemblement pour un événement serveur</li>
+                            <li>Point de rencontre après dispersion en PvP</li>
+                        </ul>
+                    </div>
+
+                    <div class="permissions-box">
+                        <h4>🔐 Permissions Requises</h4>
+                        <ul>
+                            <li><span class="permission-level">LEADER</span> Peut lancer des rallies</li>
+                            <li><span class="permission-level">OFFICER</span> Peut lancer des rallies</li>
+                            <li><span class="permission-level">MEMBER</span> Reçoit les notifications</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Faction Logs -->
+                <div class="utility-card">
+                    <div class="utility-header">
+                        <span class="utility-icon">📜</span>
+                        <div class="utility-title">
+                            <h2>Logs d'Activité Faction</h2>
+                            <span class="utility-tag">Sécurité</span>
+                        </div>
+                    </div>
+
+                    <p class="utility-description">
+                        Un système de journalisation complet qui enregistre toutes les actions importantes au sein de la faction, permettant de détecter les abus et de maintenir la transparence.
+                    </p>
+
+                    <div class="command-box">
+                        <h4>📝 Commandes</h4>
+                        <code>/f log [page]</code>
+                        <code>/f log filter &lt;type&gt;</code>
+                        <code>/f log search &lt;joueur&gt;</code>
+                    </div>
+
+                    <div class="features-section">
+                        <h3>📊 Actions Enregistrées</h3>
+                        <ul class="features-list">
+                            <li><strong>Claims</strong> : Tout claim/unclaim de territoire avec coordonnées exactes</li>
+                            <li><strong>Banque</strong> : Dépôts et retraits d'argent avec montants et timestamps</li>
+                            <li><strong>Promotions/Rétrogradations</strong> : Changements de rang avec l'auteur et la cible</li>
+                            <li><strong>Invitations</strong> : Qui a invité qui, acceptations et refus</li>
+                            <li><strong>Kicks/Bans</strong> : Expulsions et bannissements de membres avec raisons</li>
+                            <li><strong>Permissions</strong> : Modifications des permissions de rang</li>
+                            <li><strong>Alliances/Ennemis</strong> : Changements de relations diplomatiques</li>
+                            <li><strong>Power</strong> : Gains et pertes de power significatifs (>10)</li>
+                        </ul>
+                    </div>
+
+                    <div class="features-section">
+                        <h3>🔍 Système de Filtrage</h3>
+                        <ul class="features-list">
+                            <li>Filtrer par type d'action (claim, bank, promotion, etc.)</li>
+                            <li>Rechercher les actions d'un joueur spécifique</li>
+                            <li>Filtrer par date/période</li>
+                            <li>Export des logs en fichier texte pour archivage</li>
+                        </ul>
+                    </div>
+
+                    <div class="stats-row">
+                        <div class="stat-badge">
+                            <span class="stat-label">Rétention:</span>
+                            <span class="stat-value">30 jours</span>
+                        </div>
+                        <div class="stat-badge">
+                            <span class="stat-label">Logs par page:</span>
+                            <span class="stat-value">10 entrées</span>
+                        </div>
+                        <div class="stat-badge">
+                            <span class="stat-label">Mise à jour:</span>
+                            <span class="stat-value">Temps réel</span>
+                        </div>
+                    </div>
+
+                    <div class="use-cases">
+                        <h4>💡 Avantages Principaux</h4>
+                        <ul>
+                            <li>Détecter les vols dans la banque faction</li>
+                            <li>Identifier les traîtres qui unclaim des territoires</li>
+                            <li>Auditer les décisions de leadership</li>
+                            <li>Résoudre les conflits internes avec preuves</li>
+                            <li>Comprendre l'évolution de la faction</li>
+                        </ul>
+                    </div>
+
+                    <div class="permissions-box">
+                        <h4>🔐 Accès aux Logs</h4>
+                        <ul>
+                            <li><span class="permission-level">LEADER</span> Accès complet à tous les logs</li>
+                            <li><span class="permission-level">OFFICER</span> Accès aux logs (configurable)</li>
+                            <li><span class="permission-level">MEMBER</span> Accès restreint ou interdit</li>
+                        </ul>
+                        <p style="margin-top: 15px; color: var(--text-secondary); font-size: 0.9em;">
+                            💡 <em>Les permissions d'accès aux logs sont configurables par le leader via /f perms</em>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Theme Switcher
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+            const savedTheme = localStorage.getItem('ef-theme') || 'dark';
+            html.setAttribute('data-theme', savedTheme);
+
+            document.querySelectorAll('.ef-theme-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.theme === savedTheme) {
+                    btn.classList.add('active');
+                }
+
+                btn.addEventListener('click', () => {
+                    const theme = btn.dataset.theme;
+                    html.setAttribute('data-theme', theme);
+                    localStorage.setItem('ef-theme', theme);
+
+                    document.querySelectorAll('.ef-theme-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+
+            // Language Switcher
+            document.querySelectorAll('.ef-lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.ef-lang-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

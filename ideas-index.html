@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idées de Développement - Erinium Faction</title>
+    <link rel="stylesheet" href="common-themes.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 40px 30px;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 80px;
+            padding: 60px 40px;
+            background: var(--gradient-header);
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-section h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .hero-section .subtitle {
+            font-size: 1.4em;
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 900px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 20px 35px;
+            border-radius: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-stat-value {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .hero-stat-label {
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        .intro-text {
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .intro-text h2 {
+            color: var(--accent-2);
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .intro-text p {
+            color: var(--text-secondary);
+            font-size: 1.15em;
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .category-card {
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            padding: 0;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-2);
+        }
+
+        .category-header {
+            background: var(--gradient-primary);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .category-icon {
+            font-size: 4em;
+            margin-bottom: 15px;
+            display: block;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        .category-title {
+            font-size: 1.7em;
+            color: #ffffff;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .category-count {
+            background: rgba(255, 255, 255, 0.25);
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .category-body {
+            padding: 30px;
+        }
+
+        .category-description {
+            color: var(--text-secondary);
+            font-size: 1.05em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .category-features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .category-features li {
+            padding: 10px 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .category-features li:last-child {
+            border-bottom: none;
+        }
+
+        .category-features li::before {
+            content: '✦';
+            color: var(--accent-2);
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .category-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            background: var(--bg-secondary);
+            color: var(--accent-2);
+            font-weight: 700;
+            font-size: 1.05em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover .category-cta {
+            background: var(--accent-2);
+            color: #ffffff;
+            transform: translateX(5px);
+        }
+
+        .quick-nav {
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .quick-nav h2 {
+            color: var(--accent-2);
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .quick-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .quick-nav-btn {
+            padding: 15px 25px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .quick-nav-btn:hover {
+            background: var(--accent-2);
+            color: #ffffff;
+            border-color: var(--accent-2);
+            transform: translateX(5px);
+        }
+
+        .quick-nav-btn span {
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5em;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Controls Bar -->
+    <div class="ef-controls-bar">
+        <div class="ef-controls-left">
+            <a href="index.html" class="ef-home-btn">🏠 Accueil</a>
+        </div>
+        <div class="ef-controls-right">
+            <div class="ef-control-group">
+                <span class="ef-control-label">Thème</span>
+                <button class="ef-theme-btn" data-theme="light">☀️ Clair</button>
+                <button class="ef-theme-btn active" data-theme="dark">🌙 Sombre</button>
+                <button class="ef-theme-btn" data-theme="erinium">✨ Erinium</button>
+            </div>
+            <div class="ef-control-group">
+                <span class="ef-control-label">Langue</span>
+                <button class="ef-lang-btn active" data-lang="fr">🇫🇷 FR</button>
+                <button class="ef-lang-btn" data-lang="en">🇬🇧 EN</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="ef-content-wrapper">
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1>💡 Idées de Développement</h1>
+                    <p class="subtitle">
+                        Une collection complète d'idées innovantes pour enrichir l'expérience Erinium Faction.
+                        Chaque système a été pensé pour être équilibré, engageant et parfaitement intégré au gameplay PvP Faction.
+                    </p>
+
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">8</div>
+                            <div class="hero-stat-label">Catégories</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">15+</div>
+                            <div class="hero-stat-label">Systèmes</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value">100%</div>
+                            <div class="hero-stat-label">Équilibré</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Introduction -->
+            <div class="intro-text">
+                <h2>🎯 À Propos de Ces Idées</h2>
+                <p>
+                    Ce catalogue présente des dizaines d'idées soigneusement conçues pour améliorer votre serveur Minecraft PvP Faction.
+                    Chaque système a été pensé pour s'intégrer naturellement avec vos mécaniques existantes (power, jobs, economy, territory)
+                    sans créer de déséquilibre ou de "pay-to-win".
+                </p>
+                <p>
+                    Les idées sont organisées en 8 catégories thématiques, couvrant tous les aspects du gameplay : du PvP stratégique
+                    aux événements communautaires, en passant par les utilitaires de qualité de vie et la personnalisation cosmétique.
+                </p>
+                <p>
+                    <strong>Toutes les idées sont équilibrées, compréhensibles et prêtes à être implémentées !</strong>
+                </p>
+            </div>
+
+            <!-- Categories Grid -->
+            <div class="categories-grid">
+                <!-- Category 1: PvP Gameplay -->
+                <a href="pvp-gameplay.html" class="category-card">
+                    <div class="category-header">
+                        <span class="category-icon">⚔️</span>
+                        <h3 class="category-title">Gameplay PvP & Faction</h3>
+                        <span class="category-count">3 Systèmes</span>
+                    </div>
+                    <div class="category-body">
+                        <p class="category-description">
+                            Systèmes stratégiques pour améliorer le PvP, encourager les combats organisés et ajouter de la profondeur au gameplay faction.
+                        </p>
+                        <ul class="category-features">
+                            <li>Système de Siège de Territoire</li>
+                            <li>Points de Capture Dynamiques</li>
+                            <li>Système de Bounty (Prime)</li>
+                        </ul>
+                        <div class="category-cta">
+                            Découvrir les idées →
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Category 2: Progression -->
+                <a href="progression-rewards.html" class="category-card">
+                    <div class="category-header">
+                        <span class="category-icon">🏆</span>
+                        <h3 class="category-title">Progression & Récompenses</h3>
+                        <span class="category-count">1 Système</span>
+                    </div>
+                    <div class="category-body">
+                        <p class="category-description">
+                            Système de saisons compétitives avec classements, récompenses exclusives et reconnaissance des meilleures factions.
+                        </p>
+                        <ul class="category-features">
+                            <li>Saisons de 1-3 mois</li>
+                            <li>Classement multi-critères</li>
+                            <li>Récompenses massives Top 3</li>
+                        </ul>
+                        <div class="category-cta">
+                            Découvrir les idées →
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Category 3: Utilities -->
+                <a href="utilities-qol.html" class="category-card">
+                    <div class="category-header">
+                        <span class="category-icon">🛠️</span>
+                        <h3 class="category-title">Utilitaires & Qualité de Vie</h3>
+                        <span class="category-count">2 Systèmes</span>
+                    </div>
+                    <div class="category-body">
+                        <p class="category-description">
+                            Outils essentiels pour améliorer la coordination, la communication et la gestion des factions au quotidien.
+                        </p>
+                        <ul class="category-features">
+                            <li>Signaux de Ralliement</li>
+                            <li>Logs d'Activité Faction</li>
+                        </ul>
+                        <div class="category-cta">
+                            Découvrir les idées →
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Category 4: Combat -->
+                <a href="combat-pvp.html" class="category-card">
+                    <div class="category-header">
+                        <span class="category-icon">🗡️</span>
+                        <h3 class="category-title">Combat & PvP Amélioré</h3>
+                        <span class="category-count">3 Systèmes</span>
+                    </div>
+                    <div class="category-body">
+                        <p class="category-description">
+                            Systèmes pour améliorer l'équité du PvP, empêcher les abus et offrir des options d'entraînement.
+                        </p>
+                        <ul class="category-features">
+                            <li>Combat Logging (Anti-Déco)</li>
+                            <li>Kit PvP d'Urgence</li>
+                            <li>Système de Duel</li>
+                        </ul>
+                        <div class="category-cta">
+                            Découvrir les idées →
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Category 5: World -->
+                <a href="world-exploration.html" class="category-card">
+                    <div class="category-header">
+                        <span class="category-icon">🌍</span>
+                        <h3 class="category-title">Monde & Exploration</h3>
+                        <span class="category-count">2 Systèmes</span>
+                    </div>
+                    <div class="category-body">
+                        <p class="category-description">
+                            Événements dynamiques et zones stratégiques pour enrichir l'expérience de jeu et l'exploration.
+                        </p>
+                        <ul class="category-features">
+                            <li>Événements Météo PvP</li>
+                            <li>Système de Outpost</li>
+                        </ul>
+                        <div class="category-cta">
+                            Découvrir les idées →
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Category 6: Cosmetics -->
+                <a href="cosmetics.html" class="category-card">
+                    <div class="category-header">
+                        <span class="category-icon">🎨</span>
+                        <h3 class="category-title">Cosmétiques & Personnalisation</h3>
+                        <span class="category-count">2 Systèmes</span>
+                    </div>
+                    <div class="category-body">
+                        <p class="category-description">
+                            Systèmes pour personnaliser l'apparence des joueurs et des factions, créer une identité unique.
+                        </p>
+                        <ul class="category-features">
+                            <li>Système de Titres</li>
+                            <li>Capes de Faction</li>
+                        </ul>
+                        <div class="category-cta">
+                            Découvrir les idées →
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Category 7: Statistics -->
+                <a href="statistics.html" class="category-card">
+                    <div class="category-header">
+                        <span class="category-icon">📊</span>
+                        <h3 class="category-title">Statistiques & Leaderboards</h3>
+                        <span class="category-count">1 Système</span>
+                    </div>
+                    <div class="category-body">
+                        <p class="category-description">
+                            Système complet de tracking des performances PvP avec classements et statistiques détaillées.
+                        </p>
+                        <ul class="category-features">
+                            <li>Tracking K/D, Dégâts, Killstreaks</li>
+                            <li>Classements Multi-Catégories</li>
+                            <li>GUI Interactif avec Graphiques</li>
+                        </ul>
+                        <div class="category-cta">
+                            Découvrir les idées →
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Category 8: Events -->
+                <a href="events-minigames.html" class="category-card">
+                    <div class="category-header">
+                        <span class="category-icon">🎁</span>
+                        <h3 class="category-title">Événements & Mini-Jeux</h3>
+                        <span class="category-count">2 Systèmes</span>
+                    </div>
+                    <div class="category-body">
+                        <p class="category-description">
+                            Événements épiques et activités collectives pour rassembler la communauté et offrir des défis uniques.
+                        </p>
+                        <ul class="category-features">
+                            <li>Événement Raid Boss</li>
+                            <li>Chasse au Trésor Faction</li>
+                        </ul>
+                        <div class="category-cta">
+                            Découvrir les idées →
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Quick Navigation -->
+            <div class="quick-nav">
+                <h2>🚀 Navigation Rapide</h2>
+                <div class="quick-nav-grid">
+                    <a href="pvp-gameplay.html" class="quick-nav-btn">
+                        <span>⚔️</span> PvP & Faction
+                    </a>
+                    <a href="progression-rewards.html" class="quick-nav-btn">
+                        <span>🏆</span> Progression
+                    </a>
+                    <a href="utilities-qol.html" class="quick-nav-btn">
+                        <span>🛠️</span> Utilitaires
+                    </a>
+                    <a href="combat-pvp.html" class="quick-nav-btn">
+                        <span>🗡️</span> Combat
+                    </a>
+                    <a href="world-exploration.html" class="quick-nav-btn">
+                        <span>🌍</span> Monde
+                    </a>
+                    <a href="cosmetics.html" class="quick-nav-btn">
+                        <span>🎨</span> Cosmétiques
+                    </a>
+                    <a href="statistics.html" class="quick-nav-btn">
+                        <span>📊</span> Statistiques
+                    </a>
+                    <a href="events-minigames.html" class="quick-nav-btn">
+                        <span>🎁</span> Événements
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Theme Switcher
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+            const savedTheme = localStorage.getItem('ef-theme') || 'dark';
+            html.setAttribute('data-theme', savedTheme);
+
+            document.querySelectorAll('.ef-theme-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.theme === savedTheme) {
+                    btn.classList.add('active');
+                }
+
+                btn.addEventListener('click', () => {
+                    const theme = btn.dataset.theme;
+                    html.setAttribute('data-theme', theme);
+                    localStorage.setItem('ef-theme', theme);
+
+                    document.querySelectorAll('.ef-theme-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+
+            // Language Switcher
+            document.querySelectorAll('.ef-lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.ef-lang-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
